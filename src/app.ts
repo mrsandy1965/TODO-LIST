@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
+import productRoutes from "./routes/product.routes";
 dotenv.config()
 interface App_Interface{
     startServer():void;
@@ -33,6 +34,7 @@ export default class App implements App_Interface{
     initializeRoutes(): void {
         console.log("route initialzied")
         this.app.use(express.json())
+        this.app.use("/api/products", productRoutes);
     }
 
 }
